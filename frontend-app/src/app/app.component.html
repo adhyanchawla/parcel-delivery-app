@@ -1,0 +1,5 @@
+<!-- when user not logged in display navbar having login signup buttons -->
+<app-navigation *ngIf="!token"></app-navigation> 
+<!-- when user logged in display navbar having profile order & pickup logout buttons  -->
+<app-logged-in *ngIf="token"></app-logged-in>
+<router-outlet></router-outlet>

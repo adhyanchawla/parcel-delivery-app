@@ -1,0 +1,37 @@
+<!-- users register form -->
+<body>
+    <form [formGroup]="signupForm" (ngSubmit)="signup()" novalidate>
+      <h2>SIGN UP</h2>
+      <input 
+      type="text" 
+      placeholder="Name"
+      formControlName="name"
+       />
+
+      <input 
+      type="text" 
+      placeholder="Email"
+      formControlName="email"
+       />
+  
+      <input 
+      type="password" 
+      placeholder="Password"
+      formControlName="password"
+       />
+  
+      <button 
+      type="submit" 
+      value="SIGNUP"
+      class="submit" [disabled]="!signupForm.valid">Submit</button>
+  
+      <div class="alert alert-danger alerts" role="alert" *ngIf="isFormValid">
+        Please fill all fields.
+      </div>
+      <div class="alert alert-danger alerts" role="alert" *ngIf="areCredentialsInvalid">
+          Invalid user or password.
+      </div>
+    </form>
+  </body>
+  
+

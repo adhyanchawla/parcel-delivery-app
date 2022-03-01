@@ -1,0 +1,30 @@
+<!-- login form implemented -->
+<body>
+    <form [formGroup]="loginForm" (ngSubmit)="login()" novalidate>
+      <h2>LOG IN</h2>
+      <input 
+      type="text" 
+      placeholder="Email"
+      formControlName="email"
+     />
+  
+      <input 
+      type="password" 
+      placeholder="Password"
+      formControlName="password"
+     />
+  
+      <button 
+      type="submit" 
+      value="LOGIN"
+      class="submit" [disabled]="!loginForm.valid">Submit</button>
+  
+      <div class="alert alert-danger alerts" role="alert" *ngIf="isFormValid">
+        Please fill all fields.
+      </div>
+      <div class="alert alert-danger alerts" role="alert" *ngIf="areCredentialsInvalid">
+          Invalid user or password.
+      </div>
+    </form>
+  </body>
+  

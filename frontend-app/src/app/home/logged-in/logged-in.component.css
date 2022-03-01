@@ -1,0 +1,23 @@
+.limit {
+    /* margin-top: -100px; */
+    width: 100vw;
+    /* height: 100px; */
+    position: fixed;
+}
+
+.headbg {
+    background-color: black;
+    color: #fff;
+}
+
+.modal {
+    margin-top: 100px;
+    position: fixed;
+    z-index: 1;
+    height: 50vh;
+    width: 50vw;
+    border: 1px solid;
+    background-color: red;
+    left: 0;
+    top: 0;
+}

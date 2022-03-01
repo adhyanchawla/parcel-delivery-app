@@ -1,0 +1,63 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin-top: 0px;
+}
+
+
+.completediv {
+    height: 100vh;
+    width: 100vw;
+    /* border: 1px solid red; */
+    background-color: rgb(240,245,247);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.minidiv {
+    /* margin-top: 100px; */
+    height: 78vh;
+    width: 89vw;
+    border: 1px solid;
+    background-color: #fff;
+}
+
+.info {
+    height: 15%;
+    width: 100%;
+    border: 1px solid;
+}
+
+.options {
+    height: 83%;
+    width: 20%;
+    /* border: 1px solid; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    background-color: rgb(240,245,247);
+    margin-left: 5%;
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+.order-list, .account-settings, .addresses, .manage-payments, .support {
+    height: 17%;
+    width: 100%;
+    /* border: 1px solid; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    background-color: rgb(240,245,247);
+}
+
+.options-info {
+    height: 85%;
+    width: 75%;
+    border: 1px solid;
+}

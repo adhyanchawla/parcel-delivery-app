@@ -1,0 +1,73 @@
+<!-- user enter the details of the order -->
+<body>
+  <div class="completediv">
+    <div class="minidiv">
+      <div class="order-form">
+        <form
+          [formGroup]="orderForm"
+          (ngSubmit)="order()"
+          novalidate
+          >
+          <h2>ENTER ORDER DETAILS</h2>
+          <!-- <label for="orderType">Order Type</label> -->
+          <select formControlName="orderType" placeholder="Order Type">
+            <option selected>Order Type</option>
+            <option value="Electronics">Electronics</option>
+            <option value="Sports Equipment">Sports Equipment</option>
+            <option value="Apparel and Accessories">Apparel and Accessories</option>
+            <option value="Household Items">Household Items</option>
+            <option value="Automotives">Automotives</option>
+            <!-- <option *ngFor="let orderType of orderTypes">{{ orderType }}</option> -->
+          </select>
+          <!-- <label for="weight">Weight</label> -->
+          <input
+            type="text"
+            placeholder="Enter Weight in kgs"
+            formControlName="weight"
+          />
+          <!-- <label for="length">Length</label> -->
+          <input
+            type="text"
+            placeholder="Enter Length in inches"
+            formControlName="length"
+          />
+          <!-- <label for="width">Width</label> -->
+          <input
+            type="text"
+            placeholder="Enter Width in inches"
+            formControlName="width"
+          />
+          <!-- <label for ="image" style="display: flex; align-items: space-between;">Upload Image</label> -->
+          <span class="uploadImage">Select Image</span>
+          <input
+            #imageInput
+            type="file"
+            
+            placeholder="Upload Order Image"
+            formControlName="sampleFile"
+            
+          />
+          <!-- <label for="pickupAddress">Pickup Address</label> -->
+          <input
+            type="text"
+            placeholder="Enter Pickup Address"
+            formControlName="pickupAddress"
+          />
+          <!-- <label for="dropAddress">Drop Address</label> -->
+          <input
+            type="text"
+            placeholder="Enter Drop Address"
+            formControlName="dropAddress"
+          />
+          <!-- <label for="phone">Phone Number</label> -->
+          <input
+            type="text"
+            placeholder="Alternate Phone Number"
+            formControlName="phone"
+          />
+          <button class="btn btn-primary" [disabled]="!orderForm.valid">Get Cost Estimate</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>

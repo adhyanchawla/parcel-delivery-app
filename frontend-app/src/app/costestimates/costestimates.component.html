@@ -1,0 +1,21 @@
+<!-- component used to estimate the cost of the order: yet to be implemented -->
+<body>
+    <div class="completediv">
+        <div class="minidiv">
+            <h2 class="heading">ORDER SUMMARY</h2>
+            <div class="order-details">
+                <p>Order Type:  {{ orderSummary.orderType }}</p>
+                <p>Order Weight: {{ orderSummary.weight}} kg </p>
+                <p>Order Length: {{orderSummary.length}} inches </p>
+                <p>Order Width: {{ orderSummary.width }} inches </p> 
+                <!-- <p>Order Image: {{ orderSummary.sampleFile}} </p> -->
+                <p>Order Pickup Address: {{ orderSummary.pickupAddress}}</p>
+                <p>Order Drop Address: {{ orderSummary.dropAddress }}</p>
+                <div class="submit-details">
+                    <button class="btn btn-success moveLeft">Your Estimate: 100</button>
+                    <button class="btn btn-primary" (click)="payment()">Place Order</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
