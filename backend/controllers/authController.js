@@ -8,24 +8,24 @@ const User = require("./../models/userModel");
 // stores sign up form data to the database 
 exports.signup = async (req, res, next) => {
   const errors = validationResult(req);
-
-  if (errors.isEmpty()) {
-    return;
-  }
+  console.log(errors.isEmpty());
+  // if (errors.isEmpty()) {
+  //   return;
+  // }
 
   const name = req.body.name;
   const email = req.body.email;
   const password = req.body.password;
-
+  console.log(name, email, password);
   try {
     //encryted to 12 character long pswd
     const hashedPassword = await bcrypt.hash(password, 12);
-
     const userDetails = {
       name: name,
       email: email,
       password: hashedPassword,
     };
+    console.log(userDetails);
 
     //store in the database
     const result = await User.save(userDetails);

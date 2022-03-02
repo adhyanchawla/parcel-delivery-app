@@ -9,10 +9,11 @@ dotenv.config({path: './config.env'});
 
 const userRoutes = require('./routes/userRoutes');
 
-
 const orderRoutes = require('./routes/orderRoutes');
 
 const fileUploadRoutes = require('./routes/fileUploadRoutes');
+
+const errorController = require('./controllers/error');
 
 const app = express();
 

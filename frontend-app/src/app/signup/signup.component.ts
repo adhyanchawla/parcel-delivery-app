@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, NgForm } from '@angular/forms';
 import { AuthenticationService } from '../authentication.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -10,7 +11,7 @@ import { AuthenticationService } from '../authentication.service';
 export class SignupComponent implements OnInit {
   signupForm: FormGroup;
 
-  constructor(private authenticationService: AuthenticationService) {}
+  constructor(private authenticationService: AuthenticationService, private router: Router) {}
 
   ngOnInit(): void {
     this.signupForm = this.createFormGroup();
@@ -37,19 +38,20 @@ export class SignupComponent implements OnInit {
   // on clicking signup button
   signup(): void {
     //checks whether form is valid
-    if (!this.signupForm.valid) {
-      this.isFormValid = true;
-      this.areCredentialsInvalid = false;
-      return;
-    } else if(!this.authenticationService.authenticate()) {
-      this.isFormValid = false;
-      this.areCredentialsInvalid = true;
-    }
+    // if (!this.signupForm.valid) {
+    //   this.isFormValid = true;
+    //   this.areCredentialsInvalid = false;
+    //   return;
+    // } else if(!this.authenticationService.authenticate()) {
+    //   this.isFormValid = false;
+    //   this.areCredentialsInvalid = true;
+    // }
     //this.checkCredentials(this.signupForm);
     this.authenticationService
       .signup(this.signupForm.value)
       .subscribe((msg) => {
         console.log(msg);
+        this.router.navigateByUrl('/login');
       });
   }
 }

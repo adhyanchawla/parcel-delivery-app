@@ -19,7 +19,7 @@ router.post('/signup',
             return Promise.reject('Email address already exists!');
         }
     })
-    .normalizeEmail(), 
+    .normalizeEmail(),
     body('password').trim().isLength({ min: 8 })
 ], authController.signup );
 
