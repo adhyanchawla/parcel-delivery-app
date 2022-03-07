@@ -5,12 +5,12 @@
       <div class="order-form">
         <form
           [formGroup]="orderForm"
-          (ngSubmit)="order()"
+          (ngSubmit)="goToCostEstimates()"
           novalidate
           >
           <h2>ENTER ORDER DETAILS</h2>
           <!-- <label for="orderType">Order Type</label> -->
-          <select formControlName="orderType" placeholder="Order Type">
+          <select formControlName="type" placeholder="Order Type">
             <option selected>Order Type</option>
             <option value="Electronics">Electronics</option>
             <option value="Sports Equipment">Sports Equipment</option>
@@ -63,7 +63,7 @@
           <input
             type="text"
             placeholder="Alternate Phone Number"
-            formControlName="phone"
+            formControlName="alternatePhone"
           />
           <button class="btn btn-primary" [disabled]="!orderForm.valid">Get Cost Estimate</button>
         </form>

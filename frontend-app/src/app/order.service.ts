@@ -1,9 +1,7 @@
 // this section has not yet been fully implemented
-import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, first, Observable } from 'rxjs';
-import { Output, EventEmitter } from '@angular/core';
-import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Order } from './model/Order';
 import { errorHandlerService } from './error-handler.service';
@@ -18,7 +16,7 @@ export class OrderService {
   tokenArrray = [];
   private url = 'http://127.0.0.1:3000/order';
 
-  userId = JSON.parse(localStorage.getItem('token'))[1];
+  userId = localStorage.getItem('userAccessToken')[1];
 
   //headers created
   httpOptions: { headers: HttpHeaders } = {
@@ -30,24 +28,60 @@ export class OrderService {
   }
 
   // upload form data
-  uploadFormData(x: FormData): Observable<any> {
-    return this.http.post('http://localhost:3000/upload', x);
-  }
+  // uploadFormData(x: FormData): Observable<any> {
+  //   return this.http.post('http://localhost:3000/upload', x);
+  // }
 
   // posting an order to the database
-  postOrder(
-    orderId: Omit<Order, 'id'>
-  ): Observable<any> {
-    return this.http.post(`${this.url}/postOrder`, orderId, this.httpOptions).pipe(
-      first(),
-      catchError(this.errorHandlerService.handleError<Order>('order')),
-    )
+  private getAuthToken() {
+    const authToken = localStorage.getItem('userAccessToken');
+    return authToken;
+  }
+
+  createNewOrder(orderObject: any) {
+    let token = this.getAuthToken();
+    if (!token) {
+      token = '';
+      console.log('Empty Token');
+    }
+    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + token);
+    return this.http.post<any>(
+      'http://localhost:3000/order/postOrder',
+      orderObject,
+      {
+        headers: headers,
+        observe: 'response',
+      }
+    );
   }
 
   //get all orders
-  fetchAll() : Observable<Order[]> {
-    return this.http.get<Order[]>(`${this.url}/getOrders`, { responseType: 'json'}).pipe(
-      catchError(this.errorHandlerService.handleError<Order[]>("fetchAll", []))
-    )
+  getMyOrders() {
+    let token = this.getAuthToken();
+    if (!token) {
+      token = '';
+      console.log('Empty Token');
+    }
+    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + token);
+    return this.http.get<any>('http://localhost:3000/order/getOrders', {
+      headers: headers,
+      observe: 'response',
+    });
+  }
+
+  getOrderDetails(id: string) {
+    let token = this.getAuthToken();
+    if (!token) {
+      token = '';
+      console.log('Empty Token');
+    }
+    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + token);
+    return this.http.get<any>(
+      `http://localhost:3000/orders/order-details/${id}`,
+      {
+        headers: headers,
+        observe: 'response',
+      }
+    );
   }
 }

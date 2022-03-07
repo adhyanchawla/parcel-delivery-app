@@ -4,7 +4,7 @@
         <div class="minidiv">
             <h2 class="heading">ORDER SUMMARY</h2>
             <div class="order-details">
-                <p>Order Type:  {{ orderSummary.orderType }}</p>
+                <p>Order Type:  {{ orderSummary.type }}</p>
                 <p>Order Weight: {{ orderSummary.weight}} kg </p>
                 <p>Order Length: {{orderSummary.length}} inches </p>
                 <p>Order Width: {{ orderSummary.width }} inches </p> 
@@ -13,7 +13,8 @@
                 <p>Order Drop Address: {{ orderSummary.dropAddress }}</p>
                 <div class="submit-details">
                     <button class="btn btn-success moveLeft">Your Estimate: 100</button>
-                    <button class="btn btn-primary" (click)="payment()">Place Order</button>
+                    <button class="btn btn-primary" (click)="onCreateOrder()">Place Order</button>
+                    <button class="btn btn-danger" (click)="cancelOrder()">Cancel Order</button>
                 </div>
             </div>
         </div>

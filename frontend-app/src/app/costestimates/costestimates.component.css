@@ -49,9 +49,10 @@ body {
 button {
     margin-top: 100px;
     text-align: center;
+    margin-left: 5px;
     /* margin-left: auto; */
 }
 
-.moveLeft {
+/* .moveLeft {
     margin-right: 5px;
-}
+} */

@@ -1,13 +1,39 @@
 <!-- the first page of the web app -->
 <body>
   <!-- modal to be implemented which will be shown as a popup when the user successfully registers -->
-  <div class="modal">
-    hello
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga aperiam sit
-      dolore sed maxime, tempora necessitatibus dolor dolores earum itaque totam
-      rerum at est assumenda expedita repudiandae cum ipsum. Repellat?
-    </p>
+  <div class="modal" *ngIf="modalOpen && token">
+    <h2>UPDATE USER DETAILS</h2>
+    <form [formGroup]="userDetailsForm" (ngSubmit)="updateProfile()" novalidate>
+        <input 
+      type="number" 
+      placeholder="Phone"
+      formControlName="phone"
+       />
+
+      <input 
+      type="text" 
+      placeholder="City"
+      formControlName="city"
+       />
+        <input 
+      type="text" 
+      placeholder="State"
+      formControlName="state"
+       />
+
+      <input 
+      type="text" 
+      placeholder="Country"
+      formControlName="country"
+       />
+       <input 
+      type="text" 
+      placeholder="Pin"
+      formControlName="pin"
+       />
+       <button class="btn btn-danger" (click)="close()">Close</button>
+       <button class="btn btn-success" [disabled]="!userDetailsForm.valid">UPDATE DETAILS</button>
+    </form>
   </div>
   <div class="box">
     <div class="imageBg col-l-12">

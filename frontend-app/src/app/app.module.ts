@@ -17,6 +17,7 @@ import { PaymentsComponent } from './profile/payments/payments.component';
 import { AddressesComponent } from './profile/addresses/addresses.component';
 import { CostestimatesComponent } from './costestimates/costestimates.component';
 import { MyordersComponent } from './myorders/myorders.component';
+import { VerifyuserComponent } from './verifyuser/verifyuser.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { MyordersComponent } from './myorders/myorders.component';
     AddressesComponent,
     CostestimatesComponent,
     MyordersComponent,
+    VerifyuserComponent,
   ],
   imports: [
     BrowserModule,

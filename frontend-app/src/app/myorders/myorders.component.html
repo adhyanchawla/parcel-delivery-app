@@ -1,3 +1,30 @@
-<!-- not implemented as of now -->
-<!-- component will contain all the orders placed by the user -->
-<p>myorders works!</p>
+<body>
+    <div class="box">
+        <div class="order" *ngFor="let order of myOrders">
+          <div class="left-heading">Order id: {{ order.id }}</div>
+          <div class="right-heading">Placed At: {{ formatDate(order.createdAt)}} </div>
+        </div>
+    </div>
+</body>
+
+<!-- <div class="order-card" *ngFor="let order of myOrders">
+    <div class="order-card-heading">
+      <div class="order-card-heading-left">
+        <p>
+          Order Placed:<br />
+          {{ formatDate(order.createdAt) }}
+        </p>
+      </div>
+      <div class="order-card-heading-right">
+        <p>Order Id: {{ order.id }}</p>
+      </div>
+    </div>
+    <div class="order-card-quick-details">
+      <div class="pick-up-address">
+        <h5>Pick-Up At:</h5>
+        {{ order.pickupAddress }} <br />
+      </div>
+      <div>
+        <h5>Drop-Off At:</h5>
+        {{ order.dropAddress }} <br />
+      </div> -->

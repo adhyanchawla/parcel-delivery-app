@@ -17,12 +17,12 @@ export class AuthGuardService implements CanActivate{
       }
 
       isUserLoggedIn(){
-        let userToken = localStorage.getItem("token") ? localStorage.getItem("token") : false;
+        let userToken = localStorage.getItem("userAccessToken") ? localStorage.getItem("userAccessToken") : false;
         if(userToken){
           return true;
         }
         else {
-          this.router.navigate(['/']);
+          this.router.navigateByUrl('home');
           return false;
         }
       }  

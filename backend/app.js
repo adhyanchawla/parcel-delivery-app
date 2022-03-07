@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const sequelize = require('./utils/database');
 const dotenv = require('dotenv');
 const expressLayouts = require('express-ejs-layouts');
 
@@ -15,26 +16,25 @@ const fileUploadRoutes = require('./routes/fileUploadRoutes');
 
 const errorController = require('./controllers/error');
 
+const emailRoutes = require('./routes/emailRoutes');
+
+
+// const userAddressRoutes = require('./routes/userAddressRoutes');
+
 const app = express();
 
-const corsOpts = {
-    origin: '*',
-  
-    methods: [
-      'GET',
-      'POST',
-    ],
-  
-    allowedHeaders: [
-      'Content-Type',
-    ],
-  };
+app.use(
+  cors({
+    origin: "*",
+    methods: "GET, POST, PUT, PATCH, DELETE",
+    allowedHeaders: "Content-Type, Authorization",
+  })
+);
 
 //using middlewares to offer basic functionality without errors  
 app.set('view engine', 'ejs');
 app.use(expressLayouts);  
 
-app.use(cors(corsOpts));
 
 app.use(express.json());
 
@@ -51,7 +51,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 
-// dealing with cors errors
+// middleware dealing with cors errors
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE');
@@ -62,13 +62,24 @@ app.use((req, res, next) => {
 //endpoints created at higher level along with the routes
 app.use('/auth', userRoutes);
 app.use('/order', orderRoutes);
+app.use('/mail', emailRoutes);
+// app.use('/userDetails', userAddressRoutes);
 app.use('/upload', fileUploadRoutes);
-// app.use('/profile', userAddressRoutes);
+
 
 app.use(errorController.get404);
 
 app.use(errorController.get500);
 
+
+sequelize
+  .sync()
+  .then((result) => {
+    console.log(result);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
 //port setted up 
 const port = 3000;

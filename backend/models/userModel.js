@@ -1,23 +1,32 @@
-const db = require('../utils/database');
+const { Sequelize, DataTypes } = require('sequelize');
+const sequelize = require('../utils/database');
 
-module.exports = class User {
-    constructor(name, email, password) {
-        this.name = name;
-        this.email = email;
-        this.password = password;
-    }
 
-    static find(email) {
-        return db.execute(
-            `SELECT * FROM users WHERE email = ?`, [email]
-        )
-    }
+const User = sequelize.define('users', {
+    id: {
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
+        allowNull: false,
+        primaryKey: true
+    },
+    name: DataTypes.STRING,
+    email: DataTypes.STRING,
+    password: DataTypes.STRING,
+    phone: DataTypes.STRING(13),
+    country: DataTypes.STRING,
+    state: DataTypes.STRING,
+    city: DataTypes.STRING,
+    pin: DataTypes.STRING(6),
+    otp: {
+        type: DataTypes.STRING(6),
+        defaultValue: null,
+    },
+    isVerified : {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,
+        allowNull: false
+    },
+});
 
-    static save(user) {
-        console.log('hello');
-        return db.execute(
-            `INSERT INTO users (name, email, password) VALUES (?, ?, ?)`,
-            [user.name, user.email, user.password]
-        )
-    }
-}
+
+module.exports = User;

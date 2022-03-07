@@ -8,19 +8,22 @@ import { AuthenticationService } from '../authentication.service';
   styleUrls: ['./navigation.component.css']
 })
 export class NavigationComponent implements OnInit {
-  token: any;
+  //token: any;
   // token assigned
   constructor(private router: Router, private authenticationService: AuthenticationService) {
-    if (localStorage.getItem("token") !== undefined) {
-      this.token = localStorage.getItem("token");
-    }
+    // if (localStorage.getItem("userAccessToken") !== undefined) {
+    //   this.token = localStorage.getItem("userAccessToken");
+    // }
    }
 
   ngOnInit(): void {
+    // if (localStorage.getItem("userAccessToken") !== undefined) {
+    //   this.token = localStorage.getItem("userAccessToken");
+    // }
   }
 
+
   logout() {
-    this.token = null;
     this.authenticationService.logout();
     localStorage.clear();
   }

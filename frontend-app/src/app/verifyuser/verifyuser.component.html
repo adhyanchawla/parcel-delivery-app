@@ -1,0 +1,24 @@
+<body>
+    
+    <form [formGroup]="otpForm" (ngSubmit)="onVerify()" novalidate>
+      <h2>ENTER OTP</h2>
+      <p>An OTP has been sent to your email. Please enter the OTP to log in successfully</p>
+      <input 
+      type="text" 
+      placeholder="Enter OTP"
+      formControlName="otp"
+       />
+  
+      <button 
+      type="submit" 
+      value="SIGNUP"
+      class="submit">Verify</button>
+  
+      <!-- <div class="alert alert-danger alerts" role="alert" *ngIf="isFormValid">
+        Please fill all fields.
+      </div>
+      <div class="alert alert-danger alerts" role="alert" *ngIf="areCredentialsInvalid">
+          Invalid user or password.
+      </div> -->
+    </form>
+  </body>

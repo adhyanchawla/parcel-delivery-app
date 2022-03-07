@@ -7,20 +7,21 @@ import { AuthenticationService } from 'src/app/authentication.service';
   styleUrls: ['./logged-in.component.css']
 })
 export class LoggedInComponent implements OnInit {
-  token: any;
+  //token: any;
   // assign the value of token for the navbar to become active
   constructor(private authService: AuthenticationService) {
-    if (localStorage.getItem("token") !== undefined) {
-      this.token = localStorage.getItem("token");
-    }
+    
    }
 
   ngOnInit(): void {
+    // if (localStorage.getItem("userAccessToken") !== undefined) {
+    //   this.token = localStorage.getItem("userAccessToken");
+    // }
   }
 
   //on logout 
   logout() {
-    this.token = null;
+    //this.token = null;
     this.authService.logout();
     localStorage.clear();
   }
