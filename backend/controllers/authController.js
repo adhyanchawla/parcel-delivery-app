@@ -82,7 +82,7 @@ exports.login = (req, res, next) => {
               isProfileComplete: isProfileComplete,
             },
             "somesupersecretsauce",
-            { expiresIn: "1h" }
+            { expiresIn: "1d" }
           );
           res.status(200).json({ token: token });
         } else {

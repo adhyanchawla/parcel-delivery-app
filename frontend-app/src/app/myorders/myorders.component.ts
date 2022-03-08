@@ -7,9 +7,10 @@ import { OrderService } from '../order.service';
   styleUrls: ['./myorders.component.css']
 })
 export class MyordersComponent implements OnInit {
-  myOrders: any;
+  myOrders = [];
   constructor(private orderService: OrderService) { }
 
+  orderClicked =  false;
   ngOnInit(): void {
     
     this.orderService.getMyOrders().subscribe({
@@ -32,6 +33,12 @@ export class MyordersComponent implements OnInit {
     return formattedDate;
   }
 
+  openModal() {
+    this.orderClicked = true;
+  }
 
+  closeModal() {
+    this.orderClicked = false;
+  }
 
 }

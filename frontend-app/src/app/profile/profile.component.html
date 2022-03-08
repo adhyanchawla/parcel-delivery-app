@@ -1,17 +1,23 @@
 <!-- not fully implemented as of now -->
 <!-- displays the profile of the user (addresses, payment methods, account settings, orders) -->
 <body>
+    <div class="user-details-modal">
+        <div class="city">City: {{userData.city }}</div>
+        <div class="state">State: {{ userData.state }}</div>
+        <div class="country">Country: {{userData.country }}</div>
+        <div class="pin">Pin Code: {{userData.pin }}</div>
+    </div>
     <div class="completediv">
         <div class="minidiv">
             <div class="info">
                 <div class="left-info">
-                    <h1 class="you">Hey there!</h1>
-                    <p class="number">+91 9999999999</p>
+                    <h1 class="you">Hey {{userData.name}}!</h1>
+                    <p class="number">{{ userData.phone }}</p>
                 </div>
             </div>
             <div class="options">
                 <div class="order-list">Orders List</div>
-                <div class="addresses">Addresses</div>
+                <div class="addresses" (click)="openModal()">Addresses</div>
                 <div class="account-settings">Account Settings</div>
                 <div class="manage-payments">Manage Payments</div>
                 <div class="support">Support</div>
@@ -19,11 +25,4 @@
             <div class="option-info"></div>
         </div>
     </div>
-      <!-- <div class="alert alert-danger alerts" role="alert" *ngIf="isFormValid">
-        Please fill all fields.
-      </div>
-      <div class="alert alert-danger alerts" role="alert" *ngIf="areCredentialsInvalid">
-          Invalid user or password.
-      </div> -->
-    
 </body>

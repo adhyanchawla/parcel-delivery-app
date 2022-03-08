@@ -77,7 +77,7 @@ export class OrderService {
     }
     const headers = new HttpHeaders().set('Authorization', 'Bearer ' + token);
     return this.http.get<any>(
-      `http://localhost:3000/orders/order-details/${id}`,
+      `http://localhost:3000/order/order-details/${id}`,
       {
         headers: headers,
         observe: 'response',

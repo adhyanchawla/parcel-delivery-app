@@ -1,6 +1,20 @@
 <body>
+  <div *ngIf="orderClicked" class="order-detail-modal">
+  <div class="details" *ngFor="let orderNo of myOrders">
+    <div class="order-id">Order ID: {{ orderNo.id }}</div>
+    <div class="order-type">Order Type: {{ orderNo.type }}</div>
+    <div class="order-pickup">Order Pickup Address: {{ orderNo.pickupAddress }}</div>
+    <div class="order-drop">Order Drop Address: {{ orderNo.dropAddress }}</div>
+    <div class="order-phone">Alternate Phone: {{ orderNo.alternatePhone }}</div>
+    <div class="order-created">Order Created At: {{ orderNo.createdAt }}</div>
+    <button class="btn btn-danger" (click)="closeModal()">Close</button>
+  </div>
+</div>
     <div class="box">
-        <div class="order" *ngFor="let order of myOrders">
+      <div class="no-orders" *ngIf="myOrders.length === 0">
+        <h2>No orders have been placed till now</h2>
+      </div>
+        <div class="order" *ngFor="let order of myOrders" (click)="openModal()">
           <div class="left-heading">Order id: {{ order.id }}</div>
           <div class="right-heading">Placed At: {{ formatDate(order.createdAt)}} </div>
         </div>

@@ -1,10 +1,13 @@
 body {
+    /* position: absolute; */
     height: 100vh;
     width: 100vw;
     display: flex;
 }
 
 .box {
+    margin-top: -120px;
+    position: absolute;
     height: 80vh;
     width: 100%;
     display: flex;
@@ -16,7 +19,7 @@ body {
 .order {
     /* margin-top: 10px; */
     height: 8vh;
-    width: 80%;
+    width: 97%;
     border: 1px solid;
     background-color: rgb(32,35,46);
     color: #fff;
@@ -37,4 +40,43 @@ body {
     margin-right: auto;
     margin-left: auto;
     padding-right: auto;
+}
+
+.no-orders {
+ width: 100%;   
+}
+
+h2 {
+    text-align: center;
+}
+
+.order-detail-modal {
+    position: relative;
+    z-index: 1;
+    height: 30vh;
+    width: 30vw;
+    /* border: 1px solid; */
+    margin-left: auto;
+    margin-right: auto;
+    top: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: black;
+    color: #fff;
+    box-shadow: 0px 2px 1px 1px black;
+    padding: 2px;
+}
+
+button {
+    margin-top: 20px;
+}
+
+.order:hover {
+    cursor: pointer;
+}
+
+.details {
+    text-align: center;
 }

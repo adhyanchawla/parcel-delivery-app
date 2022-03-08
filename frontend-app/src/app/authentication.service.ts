@@ -213,7 +213,7 @@ export class AuthenticationService {
 
   //on logout redirect to home component
   logout() {
-    localStorage.removeItem("token");
+    // localStorage.removeItem("token");
     this.isAuthenticated = false;
     this.router.navigateByUrl('home');
     localStorage.clear();
